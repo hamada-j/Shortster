@@ -20,7 +20,7 @@ const app = express();
 
 mongoose.Promise = global.Promise;
 
-// mongoose.connect("mongodb+srv://hamada:b2012v2013i@cluster0.ghxig.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+// mongoose.connect(process.env.DATABASE_URL, {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 //   useCreateIndex: true

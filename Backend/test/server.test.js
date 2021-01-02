@@ -6,7 +6,7 @@ const app =  require('../server');
 
 beforeEach((done) => {
   mongoose.connect(
-    "mongodb+srv://hamada:b2012v2013i@cluster0.ghxig.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    process.env.DATABASE_URL,
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
     () => done(),
   );
