@@ -18,3 +18,5 @@ All shortcodes can contain digits, upper case letters, and lowercase letters. It
 Automatically generated shortcodes are exactly 6 characters long.
 User submitted shortcodes must be at least 4 characters long.
 A user can access a /<shortcode>/stats endpoint in order to see when the shortcode was registered, when it was last accessed, and how many times it was accessed.
+
+Backend and Fronend.
