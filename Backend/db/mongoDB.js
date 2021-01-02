@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://hamada:b2012v2013i@cluster0.ghxig.mongodb.net/<dbname>?retryWrites=true&w=majority")
+mongoose.connect(process.env.DATABASE_URL)
   .then(() => {
     console.log("Connect to MongoDB-Atlas");
   })
