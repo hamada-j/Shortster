@@ -1,4 +1,4 @@
-
+'use strict';
 const mongoose = require("mongoose");
 const ShortUrl = require('../models/shortUrl');
 const generate = require('../utils/generateID');
@@ -6,8 +6,6 @@ const generate = require('../utils/generateID');
 exports.getAll = async (req, res, next) => {
   try {
       const shortUrls = await ShortUrl.find();
-      console.log(shortUrls);
-      //res.render('index', { shortUrls });
       res.status(200).json({data: shortUrls})
   } catch (err) {
       console.log(err);

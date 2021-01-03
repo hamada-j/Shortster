@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server",
-    "jest": "jest"
+    "test": "jest --detectOpenHandles --env=node"
   },
   "keywords": [],
   "author": "Hamada",

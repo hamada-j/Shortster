@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const bodyParser = require("body-parser");
 const http = require("http");
@@ -54,11 +55,7 @@ app.use((req, res, next) => {
 
 app.use("/", apiRouter);
 
-// app.listen(process.env.PORT || 5000);
-
-// module.exports = app;
-
-const port = normalizePort(process.env.PORT || "5000" || 5000);
+const port = normalizePort(process.env.PORT || "3000" || 3000);
 
 app.set("port", port);
 

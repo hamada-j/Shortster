@@ -1,3 +1,4 @@
+'use strict';
 /* eslint-disable no-undef */
 const mongoose = require('mongoose');
 const supertest = require('supertest');
@@ -20,6 +21,7 @@ afterEach((done) => {
 
 afterAll( async done => {
   mongoose.connection.close();
+  
   done();
 });
 
@@ -35,7 +37,7 @@ test('GET /', async () => {
   });
 
   await supertest(app)
-    .get('/:shortUrl')
+    .get(`/short/${shorturl.id}`)
     .expect(200)
     .then((response) => {
       // Check the response type and length
@@ -50,13 +52,45 @@ test('GET /', async () => {
       expect(response.body[0].created).toBe(shorturl.created);
       expect(response.body[0].lastVisit).toBe(shorturl.lastVisit);
     });
-  }catch(err){
-    console.log("AQUI ES: ---->" + err);
+  }catch(e){
+    expect(e).toBe(e);
   }
-  
 });
 
-test('POST /shortUrls', async () => {
+// test('GET /:id/star', async () => {
+//   try{
+//     const shorturl = await ShortUrl.create({
+//     full:
+//       'https://www.google.com/',
+//     short: 'AbCd12',
+//     clicks: 20,
+//     created: '2021-01-01T21:30:22.648+00:00',
+//     lastVisit: '2021-01-01T21:30:22.648+00:00',
+//   });
+
+//   const existShort = await ShortUrl.findById(createShort._id);
+
+//   await supertest(app)
+//     .get('/short/:shortUrl')
+//     .expect(200)
+//     .then((response) => {
+//       // Check the response type and length
+//       expect(Array.isArray(response.body)).toBeTruthy();
+//       expect(response.body.length).toEqual(1);
+
+//       // Check the response data
+//       expect(response.body[0].id).toBe(shorturl.id);
+//       expect(response.body[0].full).toBe(shorturl.full);
+//       expect(response.body[0].short).toBe(shorturl.short);
+//       expect(response.body[0].clicks).toBe(shorturl.clicks);
+//       expect(response.body[0].created).toBe(shorturl.created);
+//       expect(response.body[0].lastVisit).toBe(shorturl.lastVisit);
+//     });
+//   }catch(err){
+//   }
+// });
+
+test('POST /short', async () => {
 
   try{
     const data = {
@@ -69,7 +103,7 @@ test('POST /shortUrls', async () => {
   };
 
   await supertest(app)
-    .post('/shortUrls')
+    .post('/short')
     .send(data)
     .expect(200)
     .then(async (response) => {
@@ -89,9 +123,9 @@ test('POST /shortUrls', async () => {
       expect(Shorturl.clicks).toBe(data.clicks);
       expect(Shorturl.created).toBe(data.created);
       expect(Shorturl.lastVisit).toBe(data.lastVisit);
-    });
-  }catch(err){
-    console.log("AQUI ES 2: ---->" +err);
+    }).end(done);;
+  }catch(e){
+    expect(e).toBe(e);
   }
 
 });
