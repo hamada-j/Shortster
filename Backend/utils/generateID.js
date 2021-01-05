@@ -7,7 +7,9 @@ const generate = function() {
   for (let i = 0; i < ID_LENGTH; i++) {
     rtn += ALPHABET.charAt(Math.floor(Math.random() * ALPHABET.length));
   }
+  
+
   return rtn;
 }
 
-module.exports = generate();
+module.exports = generate;

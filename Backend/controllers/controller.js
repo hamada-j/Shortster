@@ -32,7 +32,7 @@ exports.getOne = async (req, res, next) => {
 exports.postUrlAndShort = async (req, res, next) => {
   try{ 
     const shortUrls = await ShortUrl.findOne({ 
-      short: req.body.ShortsterUrl
+      short: req.body.short
     });
     if (shortUrls){
       return res.status(400).json({
@@ -40,8 +40,8 @@ exports.postUrlAndShort = async (req, res, next) => {
       });
     }
     const createUrlAndShort = new ShortUrl({
-       full: req.body.fullUrl, 
-       short: req.body.ShortsterUrl
+       full: req.body.url, 
+       short: req.body.short
     });
     createUrlAndShort.save((err, doc) => {
       if (err) {
@@ -58,12 +58,15 @@ exports.postUrlAndShort = async (req, res, next) => {
 };
 
 
+
 exports.postShort = async (req, res, next) => {
+ 
   try{ 
     let createShort = new ShortUrl({ 
-      full: req.body.fullUrl, 
-      short: generate
+      full: req.body.url, 
+      short: generate()
     });
+    console.log(createShort)
     const existShort = await ShortUrl.findById(createShort._id);
     if (existShort) {
        return res.status(400).json({
@@ -78,12 +81,13 @@ exports.postShort = async (req, res, next) => {
       });
       }
       res.status(200).json({data: doc})
+      
     });
-
   }catch (err) {
     console.log(err);
     res.status(500).json({ error: err });
-  }      
+  } 
+
 };
 
 exports.postShortClicks = async (req, res, next)=> {
@@ -105,4 +109,26 @@ exports.postShortClicks = async (req, res, next)=> {
     res.status(500).json({ error: err });
   }
 
-}
+};
+
+exports.deleteOne = async (req, res, next)=> {
+  console.log(req.params.id)
+  
+   try{
+  //   ShortUrl.findOneAndRemove({_id:req.params.id})
+  //   .then( doc => 
+  //     {
+  //       console.log(doc)
+  //       res.status(200).json({doc: shortUrl, data: shortUrl.full})
+  //     })
+
+  await ShortUrl.deleteOne({ _id: req.params.id });
+  res.status(200).json({msg: "deleted"})
+
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err });
+  }
+
+};
