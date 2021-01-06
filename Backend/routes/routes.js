@@ -7,7 +7,7 @@ const urlController = require("../controllers/controller");
 
 router.get('/', urlController.getAll);
 
-router.get('/:id/star', urlController.getOne);
+router.get('/:id/stats', urlController.getOne);
 
 router.post('/customUrlShort', urlController.postUrlAndShort);
 

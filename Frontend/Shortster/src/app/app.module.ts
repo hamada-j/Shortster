@@ -8,6 +8,8 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { AppComponent } from './app.component';
 
+
+/// UI Material
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -20,12 +22,17 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
+import { ShortdetailComponent } from './shortdetail/shortdetail.component';
+import { HomeComponent } from './home/home.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShortdetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,8 @@ import {MatListModule} from '@angular/material/list';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatListModule
+    MatListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

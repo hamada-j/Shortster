@@ -61,7 +61,7 @@ test('GET / get all endpoint, Should save 10 elements to database and return the
   } 
 });
 
-test('GET /:id/star, Should get one element from database givin the id', async () => {
+test('GET /:id/stats, Should get one element from database givin the id', async () => {
   try{
     const shorturl = await ShortUrl.create({
     full:
@@ -72,7 +72,7 @@ test('GET /:id/star, Should get one element from database givin the id', async (
     visitedAt: new Date(),
   });
   await supertest(app)
-    .get(`/${shorturl.id}/star`)
+    .get(`/${shorturl.id}/stats`)
     .expect(200)
     .then((response) => {
       expect(response.body.data._id).toBe(shorturl.id);

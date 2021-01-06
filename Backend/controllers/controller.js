@@ -27,13 +27,15 @@ exports.getOne = async (req, res, next) => {
 
 
 exports.postUrlAndShort = async (req, res, next) => {
+  
   try{ 
     const shortUrls = await ShortUrl.findOne({ 
       short: req.body.short
     });
+    console.log(shortUrls.short)
     if (shortUrls){
       return res.status(400).json({
-        message: "Short Url already exist"
+        message: "Short Url already exist in Database"
       });
     } else {
       const createUrlAndShort = new ShortUrl({
@@ -52,7 +54,7 @@ exports.postUrlAndShort = async (req, res, next) => {
     
   }catch (err) {
       console.log(err);
-      res.status(500).json({ error: "postUrlAndShort: " + err });
+      res.status(500).json({ message: "postUrlAndShort: " + err });
     }
 };
 
@@ -84,7 +86,7 @@ exports.postShort = async (req, res, next) => {
     });
   }catch (err) {
     console.log(err);
-    res.status(500).json({ error: "postShort: " + err });
+    res.status(500).json({ message: "postShort: " + err });
   } 
 
 };
@@ -105,7 +107,7 @@ exports.postShortClicks = async (req, res, next)=> {
     res.status(200).json({doc: shortUrl, data: shortUrl.full})
   } catch (error) {
     console.log("error: " + error);
-    res.status(500).json({ error: "postShortClicks: " + error });
+    res.status(500).json({ message: "postShortClicks: " + error });
   }
 
 };
@@ -118,7 +120,7 @@ exports.deleteOne = async (req, res, next)=> {
   
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: "deleteOne" + err });
+    res.status(500).json({ message: "deleteOne" + err });
   }
 
 };
