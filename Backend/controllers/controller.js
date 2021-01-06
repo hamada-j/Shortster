@@ -10,8 +10,7 @@ exports.getAll = async (req, res, next) => {
   } catch (err) {
       console.log(err);
       res.status(500).json({error: "getAll: " + err });
-  }
-      
+  }     
 };
 
 exports.getOne = async (req, res, next) => {
@@ -23,8 +22,7 @@ exports.getOne = async (req, res, next) => {
     } catch (err) {
       console.log(err);
       res.status(500).json({error: "getOne: " + err });
-    }
-      
+    }   
 };
 
 
@@ -41,15 +39,15 @@ exports.postUrlAndShort = async (req, res, next) => {
       const createUrlAndShort = new ShortUrl({
        full: req.body.url, 
        short: req.body.short
-    });
-    createUrlAndShort.save((err, doc) => {
-      if (err) {
-        return res.status(400).json({
-        message: "Short Url can NOT save! ---> " + err
       });
-      }
-      res.status(200).json({data: doc})
-    })
+      createUrlAndShort.save((err, doc) => {
+        if (err) {
+            return res.status(400).json({
+            message: "Short Url can`t save! ---> " + err
+          });
+        }
+        res.status(200).json({data: doc})
+      })
     }
     
   }catch (err) {
@@ -78,7 +76,7 @@ exports.postShort = async (req, res, next) => {
     createShort.save((err, doc) => {
       if (err) {
        return res.status(400).json({
-        message: "Short Url can NOT save! ---> " + err
+        message: "Short Url can`t save! ---> " + err
       });
       }
       res.status(200).json({data: doc})
@@ -106,7 +104,7 @@ exports.postShortClicks = async (req, res, next)=> {
     shortUrl.save();
     res.status(200).json({doc: shortUrl, data: shortUrl.full})
   } catch (error) {
-    console.log("este error: " + error);
+    console.log("error: " + error);
     res.status(500).json({ error: "postShortClicks: " + error });
   }
 

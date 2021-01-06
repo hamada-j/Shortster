@@ -5,30 +5,27 @@ const mongoose = require('mongoose');
 const cors = require("cors");
 require('dotenv').config();
 require("./db/mongoDB");
-
-
 /** ==========================================
  
                   ROUTING
  
 ==========================================**/
 const apiRouter = require("./routes/routes");
-
-
+/** ==========================================
+ 
+                  APP
+ 
+==========================================**/
 const app = express();
-
-
+/** ==========================================
+ 
+                  Data Base
+ 
+==========================================**/
 mongoose.Promise = global.Promise;
 
-// mongoose.connect(process.env.DATABASE_URL, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true
-// });
-
-
+/** ==========================================**/
 app.use(express.urlencoded({ extended: false }));
-
 /** ==========================================
 
               HEADERS --- CORS      
@@ -49,7 +46,7 @@ app.use((req, res, next) => {
   }
   next();
 });
-
+/** ==========================================**/
 app.use("/", apiRouter);
-
+/** ==========================================**/
 module.exports = app;

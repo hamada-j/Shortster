@@ -87,7 +87,7 @@ test('GET /:id/star, Should get one element from database givin the id', async (
   }
 });
 
-test('GET /short/:shortUrl, Should return one element from database givin the short ID with one more click', async () => {
+test('GET /short/:shortUrl, Should return one element from database givin the short ID with one more click and update the last visit', async () => {
   try{
     const shorturl = await ShortUrl.create({
     full:
