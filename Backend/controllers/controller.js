@@ -32,7 +32,6 @@ exports.postUrlAndShort = async (req, res, next) => {
     const shortUrls = await ShortUrl.findOne({ 
       short: req.body.short
     });
-    console.log(shortUrls.short)
     if (shortUrls){
       return res.status(400).json({
         message: "Short Url already exist in Database"

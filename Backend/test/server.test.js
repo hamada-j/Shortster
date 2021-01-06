@@ -16,17 +16,25 @@ beforeEach((done) => {
   );
 });
 
-afterEach((done) => {
-  mongoose.connection.db.dropDatabase(() => {
-    mongoose.connection.close(() => done());
-  });
+afterEach(async (done) => {
+
+  await ShortUrl.deleteMany({}, function(err, result) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(result)
+  }
+});
+  done();
+ 
+
 });
 
 afterAll( async done => {
   mongoose.connection.close();
   mongoose.disconnect()
   done();
-  console.log(" Fin del test!!")
+  console.log("End of Test !!")
 });
 
 test('GET / get all endpoint, Should save 10 elements to database and return them', async () => {
