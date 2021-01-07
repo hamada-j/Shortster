@@ -37,7 +37,7 @@ _Italic It is necessary to Navigate to the correct folder for run the command in
    - `$ npm i` To install the dependency's with NPM.
    - `$ npm start` To start the server running (http://localhost:3000).
 
-[Github](./img/run-api.png).
+[Github](https://github.com/hamada-j/Shortster/blob/master/img/run-api.png).
 
 _Italic Now the server It is running correct_
 
@@ -48,7 +48,7 @@ _Italic Now the server It is running correct_
    - `$ cd Shortster` Navigate to the correct.
    - `$ npm run test` To start the server test.
 
-[Github](./img/test.png).
+[Github](https://github.com/hamada-j/Shortster/blob/master/img/img/test.png).
 
 _Italic Now that the server pass the test correctly_
 
@@ -60,7 +60,7 @@ _Italic Now that the server pass the test correctly_
    - In your Browser (http://localhost:3000/api-docs/#/).
    - We can use the endpoint flowing the instruction o checking the error.
 
-[Github](./img/docs.png).
+[Github](https://github.com/hamada-j/Shortster/blob/master/img/img/docs.png).
 
 _Italic Be shore the server It is running correctly_
 
@@ -73,17 +73,17 @@ _Italic Be shore the server It is running correctly_
    - `$ npm start` With the server running (http://localhost:3000).
    - `$ ng serve -o` To start app running (http://localhost:4200/home).
 
-[Github](./img/run-app.png).
+[Github](https://github.com/hamada-j/Shortster/blob/master/img/run-app.png).
 
 _Italic Be shore the server It is running correctly_
 
 - First component it is Home where we can introduce a correct formate URL and it generate for us a doc. Or custom one by input a URL a Short ID with 4 or more characters.
 
-[Github](./img/front.png).
+[Github](https://github.com/hamada-j/Shortster/blob/master/img/front.png).
 _Italic input a url_
-[Github](./img/front.png).
+[Github](https://github.com/hamada-j/Shortster/blob/master/img/custom.png).
 _Italic input a url and short id_
 
 - Second component it is Short-detail where we can see a preview of the URL and all information from our Api and API-PreviewLink.
 
-[Github](./img/detail.png).
+[Github](https://github.com/hamada-j/Shortster/blob/master/img/detail.png).
