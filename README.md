@@ -60,7 +60,7 @@ _Italic Now that the server pass the test correctly_
    - In your Browser (http://localhost:3000/api-docs/#/).
    - We can use the endpoint flowing the instruction o checking the error.
 
-![alt text](https://github.com/hamada-j/Shortster/blob/master/img/img/docs.png).
+![alt text](https://github.com/hamada-j/Shortster/blob/master/img/docs.png).
 
 _Italic Be shore the server It is running correctly_
 
