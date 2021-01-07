@@ -1,5 +1,6 @@
 'use strict';
 const mongoose = require("mongoose");
+const { validationResult } = require("express-validator");
 const ShortUrl = require('../models/shortUrl');
 const generate = require('../utils/generateID');
 
@@ -27,67 +28,85 @@ exports.getOne = async (req, res, next) => {
 
 
 exports.postUrlAndShort = async (req, res, next) => {
-  
-  try{ 
-    const shortUrls = await ShortUrl.findOne({ 
-      short: req.body.short
-    });
-    if (shortUrls){
-      return res.status(400).json({
-        message: "Short Url already exist in Database"
-      });
-    } else {
-      const createUrlAndShort = new ShortUrl({
-       full: req.body.url, 
-       short: req.body.short
-      });
-      createUrlAndShort.save((err, doc) => {
-        if (err) {
-            return res.status(400).json({
-            message: "Short Url can`t save! ---> " + err
+
+  try {
+    const errors = validationResult(req);
+    console.log(errors)
+    if (!errors.isEmpty()) {
+      return res.status(888).json(errors);
+    }
+      try{ 
+          const shortUrls = await ShortUrl.findOne({ 
+            short: req.body.short
           });
-        }
-        res.status(200).json({data: doc})
-      })
-    }
-    
-  }catch (err) {
+          if (shortUrls){
+            return res.status(400).json({
+              message: "Short Url already exist in Database, It's to short or not valid format"
+            });
+          } else {
+            const createUrlAndShort = new ShortUrl({
+            full: req.body.url, 
+            short: req.body.short
+            });
+            createUrlAndShort.save((err, doc) => {
+              if (err) {
+                  return res.status(400).json({
+                  message: "Short Url can`t save in the DB! ---> " + err
+                });
+              }
+              res.status(200).json({data: doc})
+            })
+          }
+          
+        }catch (err) {
+            console.log(err);
+            res.status(500).json({ message: "postUrlAndShort: " + err });
+          }
+  }  catch (err){
       console.log(err);
-      res.status(500).json({ message: "postUrlAndShort: " + err });
     }
+  
 };
 
 
 
-exports.postShort = async (req, res, next) => {
- 
-  try{ 
-    let createShort = new ShortUrl({ 
-      full: req.body.url, 
-      short: generate()
-    });
-
-    const existShort = await ShortUrl.findById(createShort._id);
-    if (existShort) {
-       return res.status(400).json({
-        message: "Short Url already exist"
-      });
-    }
-
-    createShort.save((err, doc) => {
-      if (err) {
-       return res.status(400).json({
-        message: "Short Url can`t save! ---> " + err
-      });
+exports.postShort =  async (req, res, next) => {
+    try{
+      const errors = validationResult(req);
+      console.log(errors)
+      if (!errors.isEmpty()) {
+        //console.log(res.body.url)
+        return res.status(888).json(errors);
       }
-      res.status(200).json({data: doc})
-      
-    });
-  }catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "postShort: " + err });
-  } 
+        try{ 
+            let createShort = new ShortUrl({ 
+              full: req.body.url, 
+              short: generate()
+            });
 
+            const existShort = await ShortUrl.findById(createShort._id);
+            if (existShort) {
+              return res.status(400).json({
+                message: "Short Url already exist"
+              });
+            }
+
+            createShort.save((err, doc) => {
+              if (err) {
+              return res.status(400).json({
+                message: "Short Url can`t save! ---> " + err
+              });
+              }
+              res.status(200).json({data: doc})
+              
+            });
+          }catch (err) {
+            console.log(err);
+            res.status(500).json({ message: "postShort: " + err });
+          }
+    }catch (err){
+      console.log(err);
+    }
 };
 
 exports.postShortClicks = async (req, res, next)=> {
