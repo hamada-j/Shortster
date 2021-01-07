@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 'use strict';
 const mongoose = require('mongoose');
 const supertest = require('supertest');
@@ -6,6 +5,8 @@ const supertest = require('supertest');
 const generate = require('../utils/generateID')
 const ShortUrl = require('../models/shortUrl');
 const app = require('../app');
+
+
 
 
 beforeEach((done) => {
@@ -20,9 +21,9 @@ afterEach(async (done) => {
 
   await ShortUrl.deleteMany({}, function(err, result) {
   if (err) {
-    console.log(err)
+    //console.log(err)
   } else {
-    console.log(result)
+    //console.log(result)
   }
 });
   done();
