@@ -9,26 +9,40 @@ const app = require('../app');
 
 
 
-beforeEach((done) => {
+beforeEach(async (done) => {
   mongoose.connect(
    "mongodb+srv://shortster:shortster@cluster0.ghxig.mongodb.net/<dbname>?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
     () => done(),
   );
+  try {
+    await ShortUrl.deleteMany({}, function(err, result) {
+      if (err) {
+        //console.log(err)
+      } else {
+        //console.log(result)
+      }
+    });
+      done();
+    } catch (err) {
+    console.log(err);
+  }
 });
 
 afterEach(async (done) => {
+   try {
 
-  await ShortUrl.deleteMany({}, function(err, result) {
-  if (err) {
-    //console.log(err)
-  } else {
-    //console.log(result)
+    await ShortUrl.deleteMany({}, function(err, result) {
+    if (err) {
+      //console.log(err)
+    } else {
+      //console.log(result)
+    }
+  });
+    done();
+   }catch (err) {
+    console.log(err);
   }
-});
-  done();
- 
-
 });
 
 afterAll( async done => {
