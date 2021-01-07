@@ -48,7 +48,7 @@ _Italic Now the server It is running correct_
    - `$ cd Shortster` Navigate to the correct.
    - `$ npm run test` To start the server test.
 
-![alt text](https://github.com/hamada-j/Shortster/blob/master/img/img/test.png).
+![alt text](https://github.com/hamada-j/Shortster/blob/master/img/test.png).
 
 _Italic Now that the server pass the test correctly_
 
