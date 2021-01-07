@@ -37,7 +37,7 @@ _Italic It is necessary to Navigate to the correct folder for run the command in
    - `$ npm i` To install the dependency's with NPM.
    - `$ npm start` To start the server running (http://localhost:3000).
 
-![alt text](https://github.com/hamada-j/Shortster/blob/master/img/run-api.png).
+![alt text](https://github.com/hamada-j/Shortster/blob/master/img/test.png).
 
 _Italic Now the server It is running correct_
 
