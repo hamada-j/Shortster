@@ -87,3 +87,5 @@ _Italic input a url and short id_
 - Second component it is Short-detail where we can see a preview of the URL and all information from our Api and API-PreviewLink.
 
 ![alt text](https://github.com/hamada-j/Shortster/blob/master/img/detail.png).
+
+A__am_ul_All_h
