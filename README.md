@@ -88,4 +88,4 @@ _Italic input a url and short id_
 
 ![alt text](https://github.com/hamada-j/Shortster/blob/master/img/detail.png).
 
-A__am_ul_All_h
+A__am_ul_A_l_h
